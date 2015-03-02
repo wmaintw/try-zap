@@ -1,0 +1,55 @@
+apply plugin: "java"
+apply plugin: "idea"
+
+apply plugin: "zap-plugin"
+
+buildscript {
+    repositories {
+        maven {
+            url uri('../repo')
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath(
+                'com.thoughtworks.security:zap-plugin:1.0'
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile(
+            'junit:junit:4.9',
+            'org.seleniumhq.selenium:selenium-java:2.44.0'
+    )
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+test {
+    systemProperty 'zap.proxy', System.properties['zap.proxy']
+}
+
+zap {
+    server {
+        home = "/Users/wma/Downloads/security/zap-for-linux/ZAP_2.3.1"
+        apiKey = "123456"
+        host = "localhost"
+        port = 7070
+    }
+
+    target {
+        url = "http://localhost:8080/WebGoat"
+        includeTest = "original/**"
+    }
+}
