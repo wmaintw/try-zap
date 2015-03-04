@@ -50,6 +50,6 @@ zap {
 
     target {
         url = "http://localhost:8080/WebGoat"
-        includeTest = "original/**"
+        exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*']
     }
 }
