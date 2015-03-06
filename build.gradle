@@ -37,19 +37,33 @@ sourceSets {
 }
 
 test {
+    // pass zap.proxy system property to test due to the feature of gradle
     systemProperty 'zap.proxy', System.properties['zap.proxy']
 }
 
 zap {
     server {
+        // required, absolute path to the ZAP install folder
         home = "/Users/wma/Downloads/security/zap-for-linux/ZAP_2.3.1"
+
+        // optional, apikey which will be used to perform zap actions, if not provided, the plugin will generate a default apikey
         apiKey = "123456"
+
+        // optional, the host name that the ZAP should listen on, default to 127.0.0.1
         host = "localhost"
+
+        // optional, the port number that the ZAP should listen on, default to 7070
         port = 7070
     }
 
     target {
-        url = "http://localhost:8080/WebGoat"
+        // required, the website to be tested against ZAP
+        url = "http://localhost:8080/bodgeit"
+
+        // optional, urls match these regexs will be ignored from ZAP, default to no exclusion
         exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*']
+
+        // optional, ZAP will crawl from, default to zap.target.url
+        crawlFrom = "http://localhost:8080/bodgeit"
     }
 }
