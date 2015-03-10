@@ -61,9 +61,17 @@ zap {
         url = "http://localhost:8080/bodgeit"
 
         // optional, urls match these regexs will be ignored from ZAP, default to no exclusion
-        exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*']
+        exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*', ".*\\.css", ".*\\.js"]
+    }
 
-        // optional, ZAP will crawl from, default to zap.target.url
+    scan {
+        // optional, before scan, ZAP will crawl from here first, default to zap.target.url
         crawlFrom = "http://localhost:8080/bodgeit"
+
+        // optional, urls match these regex will be ignored from scan, default to no exclusion
+        exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*', ".*\\.css", ".*\\.js"]
+
+        // optional, it might take one or two hours to finish the scan, set your timeout threshold from here, in minutes, default to 60 mins
+        timeout = 60
     }
 }
