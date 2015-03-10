@@ -73,5 +73,11 @@ zap {
 
         // optional, it might take one or two hours to finish the scan, set your timeout threshold from here, in minutes, default to 60 mins
         timeout = 60
+
+        // number of hosts scanned concurrently, valid from 1 to 5, default to 2
+        hostPerScan = 2
+
+        // concurrent scanning threads per host, valid from 1 to 50, default to 2
+        threadPerHost = 10
     }
 }
