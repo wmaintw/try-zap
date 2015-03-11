@@ -1,18 +1,18 @@
 apply plugin: "java"
 apply plugin: "idea"
 
-apply plugin: "zap-plugin"
+apply plugin: "security-zap"
 
 buildscript {
     repositories {
         maven {
-            url uri('../repo')
+            url "http://dl.bintray.com/wei/maven"
         }
         mavenCentral()
     }
     dependencies {
         classpath(
-                'com.thoughtworks.security:zap-plugin:1.0'
+                'com.thoughtworks.tools:security-zap:1.0.0'
         )
     }
 }
@@ -58,7 +58,7 @@ zap {
 
     target {
         // required, the website to be tested against ZAP
-        url = "http://localhost:8080/bodgeit"
+        url = "http://localhost:8080/WebGoat"
 
         // optional, urls match these regexs will be ignored from ZAP, default to no exclusion
         exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*', ".*\\.css", ".*\\.js"]
@@ -66,7 +66,7 @@ zap {
 
     scan {
         // optional, before scan, ZAP will crawl from here first, default to zap.target.url
-        crawlFrom = "http://localhost:8080/bodgeit"
+        crawlFrom = "http://localhost:8080/WebGoat"
 
         // optional, urls match these regex will be ignored from scan, default to no exclusion
         exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*', ".*\\.css", ".*\\.js"]
