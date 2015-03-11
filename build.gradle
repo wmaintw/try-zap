@@ -37,7 +37,7 @@ sourceSets {
 }
 
 test {
-    // pass zap.proxy system property to test due to the feature of gradle
+    // required, pass zap.proxy system property to test due to the feature of gradle
     systemProperty 'zap.proxy', System.properties['zap.proxy']
 }
 
@@ -60,7 +60,7 @@ zap {
         // required, the website to be tested against ZAP
         url = "http://localhost:8080/WebGoat"
 
-        // optional, urls match these regexs will be ignored from ZAP, default to no exclusion
+        // optional, urls match these rege will be ignored from ZAP, default to no exclusion
         exclude = ['.*/css/.*', '.*/js/.*', '.*/fonts/.*', ".*\\.css", ".*\\.js"]
     }
 
