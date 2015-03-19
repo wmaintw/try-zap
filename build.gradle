@@ -6,7 +6,7 @@ apply plugin: "security-zap"
 buildscript {
     repositories {
         maven {
-            url "http://dl.bintray.com/wei/maven"
+            url "http://jcenter.bintray.com"
         }
         mavenCentral()
     }
@@ -24,7 +24,7 @@ repositories {
 dependencies {
     testCompile(
             'junit:junit:4.9',
-            'org.seleniumhq.selenium:selenium-java:2.44.0'
+            'org.seleniumhq.selenium:selenium-java:2.45.0'
     )
 }
 
