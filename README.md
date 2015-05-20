@@ -9,9 +9,31 @@ You just need several steps to benefit from ZAP Proxy.
 **step 1, Apply zap gradle plugin**
 
 ```gradle
-apply plugin: "zap-plugin"
+apply plugin: "security-zap"
 
-// TODO: Add zap plugin repo url
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath(
+                'com.thoughtworks.tools:security-zap:1.0.4'
+        )
+    }
+}
+
+zap {
+    server {
+        // required, absolute path to the ZAP install folder, note that, the path should be end with slash (/)
+        home = "path/to/ZAP/install/folder/"
+    }
+
+    target {
+        // required, the website to be tested against ZAP
+        url = "http://www.google.com"
+    }
+}
+
 ```
 
 **step 2, Config gradle 'test' task**
