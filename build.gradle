@@ -5,14 +5,11 @@ apply plugin: "security-zap"
 
 buildscript {
     repositories {
-        maven {
-            url "http://jcenter.bintray.com"
-        }
         mavenCentral()
     }
     dependencies {
         classpath(
-                'com.thoughtworks.tools:security-zap:1.0.0'
+                'com.thoughtworks.tools:security-zap:1.0.4'
         )
     }
 }
