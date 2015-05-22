@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath(
-                'com.thoughtworks.tools:security-zap:1.0.4'
+                'com.thoughtworks.tools:security-zap:1.0.5'
         )
     }
 }
@@ -41,7 +41,7 @@ test {
 zap {
     server {
         // required, absolute path to the ZAP install folder
-        home = "/Users/wma/Downloads/security/zap-for-linux/ZAP_2.3.1/"
+        home = "/Users/wma/Downloads/security/zap-for-linux/ZAP_2.3.1"
 
         // optional, apikey which will be used to perform zap actions, if not provided, the plugin will generate a default apikey
         apiKey = "123456"
